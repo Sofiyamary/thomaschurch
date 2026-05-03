@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -15,6 +15,9 @@ const navLinks = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+  const activeLabel =
+    navLinks.find((link) => link.to === pathname)?.label ?? "மெனு";
 
   const desktopLinkClass = ({ isActive }) =>
     `px-4 py-4 block transition-colors duration-200 text-sm lg:text-base whitespace-nowrap ${
@@ -80,7 +83,7 @@ const Navbar = () => {
 
         {/* Mobile header row */}
         <div className="md:hidden flex items-center justify-between px-4">
-          <span className="text-sm py-3 opacity-75">மெனு</span>
+          <span className="text-sm py-3 font-medium">{activeLabel}</span>
           <motion.button
             onClick={() => setMenuOpen((prev) => !prev)}
             className="p-3 text-white focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center"
