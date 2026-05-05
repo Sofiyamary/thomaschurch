@@ -1,2 +1,5 @@
-/uploads/*  https://iteknpvluggyjvwqqhcw.supabase.co/storage/v1/object/public/uploads/:splat  200
-/*    /index.html   200
+# Handle uploads FIRST
+/uploads/*  https://iteknpvluggyjvwqqhcw.supabase.co/storage/v1/object/public/uploads/:splat  200!
+
+# Then SPA fallback
+/*  /index.html 200
